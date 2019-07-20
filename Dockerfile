@@ -7,6 +7,20 @@ MAINTAINER KBase Developer
 # installation scripts.
 
 # RUN apt-get update
+RUN apt-get update
+RUN apt-get --yes --force-yes install build-essential
+RUN apt-get --yes --force-yes install wget
+RUN apt-get --yes --force-yes install zip
+RUN apt-get install --reinstall libc6-i386
+RUN apt-get install libgl1-mesa-glx:i386 lsb-core
+
+RUN mkdir -p /kb/deps
+COPY ./deps /kb/deps
+RUN echo Making dependency
+COPY ./data /kb/data
+
+RUN \
+  sh /kb/deps/kb_meme/install-meme.sh
 
 
 # -----------------------------------------
