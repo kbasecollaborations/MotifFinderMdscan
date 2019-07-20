@@ -20,7 +20,8 @@ class MdscanUtil:
       subprocess.call('mkdir /kb/module/work/tmp/mdscan_out', shell=True)
       subprocess.call(cmd1, shell=True)
       os.chdir("/kb/module/work/tmp/mdscan_out")
-      command = '/kb/module/work/tmp/mdscan_out/MDscan.linux -f /kb/module/work/tmp/SeqSet.fa -w '+ str(motiflen) + ' -o /kb/module/work/tmp/mdscan_out/SeqSet.out'
+      #command = '/kb/module/work/tmp/mdscan_out/MDscan.linux -f /kb/module/work/tmp/SeqSet.fa -w '+ str(motiflen)
+      command = '/kb/module/work/tmp/mdscan_out/MDscan.linux -i /kb/module/work/tmp/SeqSet.fa -w '+ str(motiflen) + ' -o /kb/module/work/tmp/mdscan_out/SeqSet.out'
       return command
 
   def run_mdscan_command(self, command):
