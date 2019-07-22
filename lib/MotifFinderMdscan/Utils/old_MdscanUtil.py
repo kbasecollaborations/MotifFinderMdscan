@@ -64,7 +64,6 @@ class MdscanUtil:
       rowDict={}
       sequence=''
       idflag=0
-      pwmflag=False
       for filename in os.listdir(path):
           outputFileList.append(path + '/' + filename)
           if(filename=="SeqSet.out"):
@@ -76,21 +75,13 @@ class MdscanUtil:
                  line=line.rstrip()
                  
                  if(line.startswith("Motif")):
-                   pwline=[]
-                   a=[]
-                   c=[]
-                   g=[]
-                   t=[]
+                   
                    if(len(motifDict)!=0):
                       #print("+++")
-                      motifDict['PWM']=pwmDict
                       motifSet.append(motifDict)
                       #print(motifDict)
-                      pwmDict={}
                       motifDict={}
                       #print("+++")
-                      
-                      #print(pwmDict)
                    motifDict['Motif_Locations'] = []
                    motifDict['PWM'] = []
                    motifDict['PFM'] = []
@@ -107,24 +98,13 @@ class MdscanUtil:
                    pfmDict['C']=[]
                    pfmDict['G']=[]
                    pfmDict['T']=[]
-                   #motifDict['PWM']=pwmDict
+                   motifDict['PWM']=pwmDict
                    motifDict['PFM']=pfmDict
                    motifDict['Iupac_sequence']=consensus
                    #print(consensus)
                    locDict={}
                  if(seqflag):
-                     if((line) and (line[0].isdigit())):
-                        out=line.split()
-                        
-                        a.append(float(out[1]))
-                        c.append(float(out[2]))
-                        g.append(float(out[3]))
-                        t.append(float(out[4]))
-                        pwmDict['A']=a
-                        pwmDict['C']=c
-                        pwmDict['G']=g
-                        pwmDict['T']=t
-                        
+                     
                      if(line.startswith(">")):
                         out=line.split("\t")
                         idflag=True
@@ -150,26 +130,20 @@ class MdscanUtil:
                         locDict['end']=seq_end;
                         #locDict['sequence']=sequence;
                         locDict['orientation']=orientation;
-                        
                         #motifDict['Motif_Locations'].append(locDict)
                      else:
                         if(idflag):
                            sequence=line
                            #print(line)
-                           locDict['sequence']=sequence
-                           
-                           
-
+                           locDict['sequence']=sequence;
+                           #print(locDict)
                            motifDict['Motif_Locations'].append(locDict)
                            locDict={}
                            idflag=False
              else:
                  #print("+++")
-                 motifDict['PWM']=pwmDict
                  motifSet.append(motifDict)
-                 print(motifDict)
-                 
-                 pwmDict={}
+                 #print(motifDict)
                  motifDict={}
                  #print("+++")
                  
