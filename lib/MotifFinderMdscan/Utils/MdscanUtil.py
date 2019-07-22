@@ -7,7 +7,7 @@ from Bio import motifs
 from Bio import SeqIO
 from Bio.Alphabet import IUPAC
 from io import StringIO
-#from installed_clients.DataFileUtilClient import DataFileUtil
+from installed_clients.DataFileUtilClient import DataFileUtil
 import shutil
 import subprocess
 
@@ -166,7 +166,7 @@ class MdscanUtil:
           # return variables are: output
           #BEGIN UploadFromMdscan
           print('Extracting motifs')
-          '''motifList = self.parse_sampler_output(params['path'])
+          motifList = self.parse_mdscan_output(params['path'])
           print(motifList)
        
           MSO = {}
@@ -183,7 +183,7 @@ class MdscanUtil:
           motif_set_ref = "%s/%s/%s" % (info[6], info[0], info[4])
           print(motif_set_ref)
           output = {'obj_ref' : motif_set_ref}
-          print(output)'''
+          print(output)
 
         
           #exit("test")
@@ -198,8 +198,8 @@ class MdscanUtil:
           # return the results
           return [output]
 
-MDU=MdscanUtil()
-output=MDU.parse_mdscan_output("/home/manish/Desktop/reorganization/reorg/MotifFinderMdscan/test_local/workdir/tmp/mdscan_out")
-print(output)
+#MDU=MdscanUtil()
+#output=MDU.parse_mdscan_output("/home/manish/Desktop/reorganization/reorg/MotifFinderMdscan/test_local/workdir/tmp/mdscan_out")
+#print(output)
 
 

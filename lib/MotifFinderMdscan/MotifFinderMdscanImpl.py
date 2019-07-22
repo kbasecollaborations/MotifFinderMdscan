@@ -85,9 +85,8 @@ class MotifFinderMdscan:
         dfu = DataFileUtil(self.callback_url)
         locDict = {}
         
-        #obj_ref = SU.UploadFromSampler(self.callback_url, sampler_params)[0]['obj_ref'] 
-        #obj_ref = SU.UploadFromSampler(self.callback_url, sampler_params)[0]['obj_ref']    
-        #MDU.write_obj_ref(sampler_out_path, obj_ref)
+        obj_ref = MDU.UploadFromMdscan(self.callback_url, mdscan_params)[0]['obj_ref']    
+        MDU.write_obj_ref(mdscan_out_path, obj_ref)
         
         timestamp = int((datetime.utcnow() - datetime.utcfromtimestamp(0)).total_seconds()*1000)
         timestamp = str(timestamp)
@@ -106,10 +105,10 @@ class MotifFinderMdscan:
         JsonPath = '/kb/module/work/tmp'
 
         dfu = DataFileUtil(self.callback_url)
-        #get_obj_params = {'object_refs' : [obj_ref]}
-        #samplerMotifSet = dfu.get_objects(get_obj_params)['data'][0]['data']
-        #mr=MakeNewReport()
-        #mr.MakeReport(htmlDir,samplerMotifSet)
+        get_obj_params = {'object_refs' : [obj_ref]}
+        mdscanMotifSet = dfu.get_objects(get_obj_params)['data'][0]['data']
+        mr=MakeNewReport()
+        mr.MakeReport(htmlDir,mdscanMotifSet)
 
 
         try:
