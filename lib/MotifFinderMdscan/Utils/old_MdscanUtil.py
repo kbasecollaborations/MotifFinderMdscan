@@ -16,6 +16,13 @@ class MdscanUtil:
       pass
 
   def build_mdscan_motif_command(self, inputFilePath, motiflen, prb):
+      '''
+
+      :param inputFilePath:
+      :param motiflen:
+      :param prb:
+      :return:
+      '''
       cmd1 = 'cp -r /kb/module/deps/kb_mdscan/MDscan.linux /kb/module/work/tmp/mdscan_out'
       subprocess.call('mkdir /kb/module/work/tmp/mdscan_out', shell=True)
       subprocess.call(cmd1, shell=True)
@@ -25,15 +32,29 @@ class MdscanUtil:
       return command
 
   def run_mdscan_command(self, command):
+      '''
+      :param command:
+      :return:
+      '''
       print (command)
       os.system(command)
 
   def write_obj_ref(self, path, obj_ref):
+      '''
+      :param path:
+      :param obj_ref:
+      :return:
+      '''
       file = open(path+"/mdscan_obj.txt","w")
       file.write(obj_ref)
       file.close() 
 
   def parse_mdscan_output(self, path):
+      '''
+
+      :param path:
+      :return:
+      '''
       outputFileList = []
  
       seqflag=False
@@ -195,11 +216,7 @@ class MdscanUtil:
                              'output is not type dict as required.')
 
 
-          # return the results
           return [output]
 
-#MDU=MdscanUtil()
-#output=MDU.parse_mdscan_output("/home/manish/Desktop/reorganization/reorg/MotifFinderMdscan/test_local/workdir/tmp/mdscan_out")
-#print(output)
 
 

@@ -16,6 +16,13 @@ class MdscanUtil:
       pass
 
   def build_mdscan_motif_command(self, inputFilePath, motiflen, prb):
+      '''
+
+      :param inputFilePath:
+      :param motiflen:
+      :param prb:
+      :return:
+      '''
       cmd1 = 'cp -r /kb/module/deps/kb_mdscan/MDscan.linux /kb/module/work/tmp/mdscan_out'
       subprocess.call('mkdir /kb/module/work/tmp/mdscan_out', shell=True)
       subprocess.call(cmd1, shell=True)
@@ -25,6 +32,11 @@ class MdscanUtil:
       return command
 
   def run_mdscan_command(self, command):
+      '''
+
+      :param command:
+      :return:
+      '''
       print (command)
       os.system(command)
 
